@@ -1,0 +1,95 @@
+<!--
+  Generated template for the N7Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Shared Cards</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar></ion-searchbar>
+  <ion-list>
+    <ion-card *ngFor="let card of boundCards">
+      <ion-item-sliding>
+        <ion-item>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-4>
+                <div *ngIf="card.CRD_img_uri">
+                  <img *ngIf="card.CRD_img_uri.length>40 && card.CRD_img_uri.length<300"  src="{{card.CRD_img_uri}}" style="position:relative;"/>
+                  <img *ngIf="card.CRD_img_uri.length>300" src="data:image/png;base64,{{card.CRD_img_uri}}" style="position:relative;"/>
+                </div>
+                <span *ngIf="!card.CRD_img_uri">
+                  <img src="/assets/imgs/credit-card-512.png" style="position:relative;"/>
+                </span>
+              </ion-col>
+              <ion-col col-8>
+                <ion-card-content style="margin-bottom:-30px;margin-top:-35px;">
+                  <ion-card-title>
+                    Card ID {{card.CRD__id}}
+                  </ion-card-title>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col col-2>
+                        <ion-icon name="contact"></ion-icon>
+                      </ion-col>
+                      <ion-col col-10 style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                        <b>{{card.CRD_na1}}</b>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col col-2>
+                        <ion-icon name="mail"></ion-icon>
+                      </ion-col>
+                      <ion-col col-10 style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                        <b>{{card.CRD_eem}}</b>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col col-2>
+                        <ion-icon name="call"></ion-icon>
+                      </ion-col>
+                      <ion-col col-10>
+                        <b>{{card.CRD_ph1}}</b>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col col-12>
+                        <ion-icon name="ios-more"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-card-content>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button expandable color="light" (click)="viewCard(card.CRD__id)">
+            <ion-icon name="eye" style="font-size:24px"></ion-icon>
+            View
+          </button>
+          <button ion-button expandable color="danger" (click)="deleteCard(card.CRD__id)">
+            <ion-icon name="trash" style="font-size:24px"></ion-icon>
+            Remove
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-card>
+  </ion-list>
+  <ion-fab bottom right>
+     <button ion-fab (click)="add()">
+        <ion-icon name="add"></ion-icon>
+     </button>
+  </ion-fab>
+</ion-content>

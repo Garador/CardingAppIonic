@@ -1,0 +1,72 @@
+<!--
+  Generated template for the N3Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <form [formGroup]="myForm">
+      <ion-item>
+        <h4 style="margin-top:10px;">System</h4>
+      </ion-item>
+      <ion-item>
+        <ion-label>Notifications</ion-label>
+        <ion-toggle formControlName="notifications"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Help Messages</ion-label>
+        <ion-toggle formControlName="help_messages"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <h4 style="margin-top:10px;">Card Settings</h4>
+      </ion-item>
+      <ion-item>
+        <ion-label>Default Sharing Card</ion-label>
+        <!--<ion-select formControlName="card_default_sharing">-->
+        <ion-select formControlName="card_default_sharing">
+          <ion-option *ngFor="let card of card_default_sharing" [value]="card.CRD__id">
+            {{card.CRD__id}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Default Card Type</ion-label>
+        <ion-select formControlName="card_default_type">
+          <ion-option value="0">Private</ion-option>
+          <ion-option value="1">Public</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Default Card Password</ion-label>
+        <ion-input type="password" formControlName="card_default_pass"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name=""></ion-icon>
+        <button ion-button full style="height:40px;" (click)="saveSettings()">
+            <h3><b>Store changes</b></h3>
+        </button>
+      </ion-item>
+    </form>
+    <!--
+    <ion-item>
+      <ion-icon name=""></ion-icon>
+      <button ion-button full style="height:40px;" (click)="logOut()">
+          <h3><b>Log Out</b></h3>
+      </button>
+    </ion-item>
+    -->
+  </ion-list>
+</ion-content>

@@ -1,0 +1,59 @@
+<!--
+  Generated template for the N1Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--<ion-header>
+  <ion-navbar>
+    <ion-title>Log In</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+
+
+<ion-content padding>
+  <div style="text-align:center">
+    <ion-img width="140" height="140" src="../../assets/imgs/logo.png"></ion-img>
+  </div>
+  <ion-list>
+    <form [formGroup]="myForm">
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <b style="color:red"><small> {{emailErrorMsg}} </small></b>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button full large (click)="logIn()"> Log In</button>
+      </ion-item>
+    </form>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 style="text-align:center">
+        <ion-img width="50px" height="50px" src="../../assets/imgs/511-google-favicon.jpg"></ion-img>
+      </ion-col>
+      <ion-col col-6 style="text-align:center" (click)="signUp()">
+        <button ion-button icon-left>
+          <ion-icon name="person-add"></ion-icon>
+          Sign-Up
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 style="text-align:center" (click)="forgotPassword()">
+        <button ion-button icon-left>
+          <ion-icon name="person-add"></ion-icon>
+          Forgot Password
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

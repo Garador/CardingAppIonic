@@ -1,0 +1,209 @@
+<!--
+  Generated template for the N9Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Editing Card {{_id}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="border:1px solid black;">
+  <form [formGroup]="myForm">
+    <ion-grid>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1 style="font-size:25px">
+          <ion-icon name="image"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+          <img *ngIf="!card.img_uri" src="/assets/imgs/credit-card-512.png" style="position:relative;"/>
+          <img *ngIf="card.img_uri && card.img_uri.length<300 && card.img_uri.length> 40" src="{{card.img_uri}}" style="position:relative;"/>
+          <img *ngIf="card.img_uri && card.img_uri.length>300" src="data:image/png;base64,{{card.img_uri}}" style="position:relative;"/>
+        </ion-col>
+        <ion-col col-1>
+          <button ion-button color="light" (click)="getImage()">
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12 *ngIf="card.vis==0"><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content" (click)="switchVisibility()" *ngIf="card.vis==0">
+        <ion-col col-1 style="font-size:20px">
+          <ion-icon name="eye-off"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <b>Private Card</b>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="card.vis!=0"><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content" (click)="switchVisibility()" *ngIf="card.vis!=0">
+        <ion-col col-1 style="font-size:20px">
+          <ion-icon name="eye"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <b>Public Card</b>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1 style="font-size:20px">
+          <ion-icon name="contact"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ion-input type="text" placeholder="Card Title Here"  formControlName="ctt"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1 style="font-size:20px">
+          <ion-icon name="contact"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ion-input type="text" placeholder="Your name here"  formControlName="na1"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1 style="font-size:25px">
+          <ion-icon name="phone-portrait"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ion-input type="number" placeholder="Your Cellphone" formControlName="ph1"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1>
+          <ion-icon name="call"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ion-input type="number" placeholder="Your local phone number" formControlName="ph2"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1>
+          <ion-icon name="logo-twitter"></ion-icon>
+        </ion-col>
+        <ion-col col-1>
+          <b>@</b>
+        </ion-col>
+        <ion-col col-10>
+          <ion-input type="text" placeholder="@yourTweeterUsername" formControlName="twt"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1>
+          <ion-icon name="logo-instagram"></ion-icon>
+        </ion-col>
+        <ion-col col-1>
+          <b>@</b>
+        </ion-col>
+        <ion-col col-10>
+          <ion-input type="text" placeholder="@yourInstagramUsername" formControlName="int"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1>
+          <ion-icon name="logo-pinterest"></ion-icon>
+        </ion-col>
+        <ion-col col-1>
+          <b>@</b>
+        </ion-col>
+        <ion-col col-10>
+          <ion-input type="text" placeholder="@yourPinterestUsername" formControlName="pin"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1>
+          <ion-icon name="logo-googleplus"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ion-input type="text" placeholder="Your Google+ Username" formControlName="gpu"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1>
+          <ion-icon name="mail"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ion-input type="text" placeholder="Your Email Here" formControlName="eem"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1>
+          <ion-icon name="mail"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ion-input type="text" placeholder="Your PO-Box Address Here" formControlName="pob"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1>
+          <ion-icon name="md-compass"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ion-input type="text" placeholder="Your Address Here" formControlName="adr"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1>
+          <ion-icon name="pin"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+          <div #map id="map" style="height:250px"></div>
+        </ion-col>
+        <ion-col col-1>
+          <button ion-button color="light" (click)="setPin()">
+            <ion-icon name="pin"></ion-icon>
+          </button>
+          <button ion-button color="light" (click)="locateSelf()">
+            <ion-icon name="locate"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <!--<ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row class="vertical-align-content">
+        <ion-col col-1>
+          <ion-icon name="pin"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+          <b>Custom Field Name Here</b>
+          <hr/>
+          <b>Custom Field Content Here</b>
+        </ion-col>
+        <ion-col col-1>
+          <button ion-button color="light">
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>--->
+      <ion-row><ion-col col-12><hr/></ion-col></ion-row>
+      <ion-row>
+        <!--<button ion-button icon-start color="light">
+          <ion-icon name="add"></ion-icon>
+          <b>Add Field</b>
+        </button>-->
+        <button ion-button icon-start (click)="updateCard()" [disabled]="!myForm.valid">
+          <ion-icon name="cloud-done"></ion-icon>
+          <b>Save</b>
+        </button>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
